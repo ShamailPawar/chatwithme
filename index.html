@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+`<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVerse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A192F;
+            --primary-light: #9575CD;
+            --secondary: #64FFDA;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            background-color: rgba(255,255,255,0.9);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .feature-card h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--dark);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .quick-access {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quick-btn {
+            padding: 0.5rem 1rem;
+            background: var(--light);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .quick-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .study-tools {
+            width: 100%;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .tools-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .tools-header h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .tool-card:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .tool-card i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .tool-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .tool-info p {
+            font-size: 0.9rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .motivational-quote {
+            font-style: italic;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EduVerse</h1>
+        <p class="subtitle">Your all-in-one productivity hub</p>
+    </header>
+    
+    <main>
+        <div class="dashboard">
+            
+            <div class="feature-card" onclick="location.href='tasks.html'">
+                <i class="fas fa-tasks"></i>
+                <h2>Task Manager</h2>
+                <p>Organize, prioritize and track your study tasks</p>
+                <div class="quick-access">
+                    <a href="tasks.html?filter=today" class="quick-btn">Today</a>
+                    <a href="tasks.html?filter=week" class="quick-btn">This Week</a>
+                </div>
+            </div>
+            
+            <div class="feature-card" onclick="location.href='whiteboard.html'">
+                <i class="fas fa-chalkboard"></i>
+                <h2>Interactive Whiteboard</h2>
+                <p>Draw, brainstorm and visualize your ideas</p>
+                <div class="quick-access">
+                    <a href="whiteboard.html?template=blank" class="quick-btn">Blank</a>
+                    <a href="whiteboard.html?template=grid" class="quick-btn">Grid</a>
+                </div>
+            </div>
+
+            <div class="feature-card" onclick="location.href='booking.html'">
+                <i class="fas fa-calendar-check"></i>
+                <h2>Study Bookings</h2>
+                <p>Schedule and manage your study sessions</p>
+                <div class="quick-access">
+                    <a href="booking.html?type=class" class="quick-btn">Classes</a>
+                    <a href="booking.html?type=meeting" class="quick-btn">Meetings</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="study-tools">
+            <div class="tools-header">
+                <h2>Study Resources & Tools</h2>
+                <p>Quick access to helpful study aids</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card" onclick="window.open('https://www.khanacademy.org/', '_blank')">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div class="tool-info">
+                        <h3>Video Lessons</h3>
+                        <p>Access thousands of educational videos</p>
+                    </div>
+                </div>
+                <div class="tool-card" onclick="window.open('https://quizlet.com/', '_blank')">
+                    <i class="fas fa-flask"></i>
+                    <div class="tool-info">
+                        <h3>Flashcards</h3>
+                        <p>Create and study with digital flashcards</p>
+                    </div>
+                </div>
+                <div class="tool-card" onclick="window.open('https://www.wolframalpha.com/', '_blank')">
+                    <i class="fas fa-calculator"></i>
+                    <div class="tool-info">
+                        <h3>Math Solver</h3>
+                        <p>Step-by-step math solutions</p>
+                    </div>
+                </div>
+                <div class="tool-card" onclick="window.open('https://www.grammarly.com/', '_blank')">
+                    <i class="fas fa-spell-check"></i>
+                    <div class="tool-info">
+                        <h3>Writing Assistant</h3>
+                        <p>Improve your writing quality</p>
+                    </div>
+                </div>
+                <div class="tool-card" onclick="window.open('https://www.mindmeister.com/', '_blank')">
+                    <i class="fas fa-project-diagram"></i>
+                    <div class="tool-info">
+                        <h3>Mind Maps</h3>
+                        <p>Visualize complex concepts</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Made for productive studying</p>
+        <p class="motivational-quote" id="motivational-quote">Loading motivational quote...</p>
+    </footer>
+
+    <script>
+        // Motivational quotes
+        const quotes = [
+            "The expert in anything was once a beginner.",
+            "Success is the sum of small efforts, repeated day in and day out.",
+            "Don't watch the clock; do what it does. Keep going.",
+            "The secret of getting ahead is getting started.",
+            "You don't have to be great to start, but you have to start to be great.",
+            "Study while others are sleeping; work while others are loafing; prepare while others are playing.",
+            "The more that you read, the more things you will know. The more that you learn, the more places you'll go."
+        ];
+
+        // Display random quote
+        document.getElementById('motivational-quote').textContent = 
+            quotes[Math.floor(Math.random() * quotes.length)];
+
+        // Add animation to feature cards on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1 + 0.3}s`;
+            });
+
+            // Add animation to tools section
+            const tools = document.querySelectorAll('.tool-card');
+            tools.forEach((tool, index) => {
+                tool.style.opacity = '0';
+                tool.style.transform = 'translateX(-20px)';
+                tool.style.animation = `fadeInLeft 0.5s ease forwards ${index * 0.1 + 0.8}s`;
+            });
+
+            // Add CSS animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes fadeInLeft {
+                    from { opacity: 0; transform: translateX(-20px); }
+                    to { opacity: 1; transform: translateX(0); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Add click effect to cards
+        document.querySelectorAll('.feature-card, .tool-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                this.appendChild(ripple);
+                
+                // Position ripple
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+                ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+                
+                // Remove ripple after animation
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body>
+</html>
